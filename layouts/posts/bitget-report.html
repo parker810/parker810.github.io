@@ -99,8 +99,16 @@
       align-items: center;
       gap: 10px;
       min-width: 0;
+      color: var(--text);
       font-size: 14px;
       font-weight: 700;
+      text-decoration: none;
+    }
+
+    .brand:hover,
+    .brand:focus-visible {
+      color: var(--accent);
+      text-decoration: none;
     }
 
     .brand-mark {
@@ -797,6 +805,80 @@
       font-size: 12px;
     }
 
+    .report-exit {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .report-exit-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .report-exit-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .report-exit-links a:hover,
+    .report-exit-links a:focus-visible {
+      color: var(--accent);
+    }
+
+    .report-pager {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .report-pager a {
+      color: var(--text);
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .report-pager .next { margin-left: auto; }
+
+    .report-pager a:hover,
+    .report-pager a:focus-visible {
+      color: var(--accent);
+    }
+
+    .float-actions {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .float-actions a {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--text-secondary);
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .18);
+    }
+
+    .float-actions a:hover,
+    .float-actions a:focus-visible {
+      border-color: var(--accent);
+      color: var(--text);
+      outline: none;
+    }
+
     @media (max-width: 900px) {
       .page { grid-template-columns: 1fr; }
       .toc { display: none; }
@@ -852,7 +934,7 @@
         --code-bg: #f2f4f6;
       }
 
-      .topbar, .toc { display: none; }
+      .topbar, .toc, .float-actions, .report-exit { display: none; }
       .page {
         display: block;
         max-width: none;
@@ -867,12 +949,12 @@
   </style>
 </head>
 <body>
-  <header class="topbar">
+  <header class="topbar" id="top">
     <div class="topbar-inner">
-      <div class="brand">
+      <a class="brand" href="{{ .Site.Home.RelPermalink }}">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span>Bitget热钱包安全事件分析</span>
-      </div>
+        <span>Peter's blog</span>
+      </a>
     </div>
   </header>
 
@@ -1553,6 +1635,22 @@ selectKeyAndSign(callerSuppliedKeyId, arbitraryTransaction)</pre>
         </div>
       </section>
 
+      <nav class="report-exit" aria-label="文章导航">
+        <div class="report-exit-links">
+          <a href="javascript:void(0);" onclick="window.history.back();">返回</a>
+          <span aria-hidden="true">|</span>
+          <a href="{{ .Site.Home.RelPermalink }}">主页</a>
+        </div>
+        <div class="report-pager">
+          {{- with .PrevInSection -}}
+            <a class="prev" href="{{ .RelPermalink }}" rel="prev">‹ {{ .Title }}</a>
+          {{- end -}}
+          {{- with .NextInSection -}}
+            <a class="next" href="{{ .RelPermalink }}" rel="next">{{ .Title }} ›</a>
+          {{- end -}}
+        </div>
+      </nav>
+
       <section id="comments">
         <h2>留言</h2>
         <script src="https://giscus.app/client.js"
@@ -1577,6 +1675,19 @@ selectKeyAndSign(callerSuppliedKeyId, arbitraryTransaction)</pre>
         不应将未确认信息作为最终结论传播。
       </footer>
     </article>
+  </div>
+
+  <div class="float-actions">
+    <a href="#top" title="回到顶部" aria-label="回到顶部">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M8 3.2 2.8 8.4l1.1 1.1L7.2 6.2V13h1.6V6.2l3.3 3.3 1.1-1.1L8 3.2Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <a href="#comments" title="查看留言" aria-label="查看留言">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M2.2 2.4h11.6c.6 0 1 .4 1 1v7.2c0 .6-.4 1-1 1H6.1L2.6 14.7c-.4.3-.9 0-.9-.5V3.4c0-.6.4-1 1-1Z" fill="currentColor"/>
+      </svg>
+    </a>
   </div>
 </body>
 </html>
