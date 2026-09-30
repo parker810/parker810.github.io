@@ -957,7 +957,8 @@
   </style>
 </head>
 <body>
-  <header class="topbar" id="top">
+  <div id="top"></div>
+  <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
         <span class="brand-mark" aria-hidden="true"></span>
@@ -1687,7 +1688,7 @@ selectKeyAndSign(callerSuppliedKeyId, arbitraryTransaction)</pre>
   </div>
 
   <div class="float-actions">
-    <a href="#top" title="回到顶部" aria-label="回到顶部">
+    <a href="#top" title="回到顶部" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
         <path d="M8 3.2 2.8 8.4l1.1 1.1L7.2 6.2V13h1.6V6.2l3.3 3.3 1.1-1.1L8 3.2Z" fill="currentColor"/>
       </svg>
