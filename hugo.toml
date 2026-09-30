@@ -91,4 +91,17 @@ enableEmoji = true
     RSS = true
 
   [params.page.comment]
-    enable = false
+    enable = true
+    [params.page.comment.giscus]
+      enable = true
+      repo = "parker810/parker810.github.io"
+      repoId = "R_kgDOU00qeA"
+      category = "General"
+      categoryId = "DIC_kwDOU00qeM4DGvEK"
+      mapping = "pathname"
+      lang = "zh-CN"
+      reactionsEnabled = "1"
+      emitMetadata = "0"
+      inputPosition = "bottom"
+      lightTheme = "light"
+      darkTheme = "dark"
