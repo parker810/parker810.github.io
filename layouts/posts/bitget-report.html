@@ -867,21 +867,26 @@
       gap: 10px;
     }
 
-    .float-actions a {
+    .float-actions a,
+    .float-actions button {
       width: 42px;
       height: 42px;
       display: grid;
       place-items: center;
+      padding: 0;
       border: 1px solid var(--border);
       border-radius: 50%;
       background: var(--surface);
       color: var(--text-secondary);
       text-decoration: none;
       box-shadow: 0 4px 16px rgba(0, 0, 0, .18);
+      cursor: pointer;
     }
 
     .float-actions a:hover,
-    .float-actions a:focus-visible {
+    .float-actions a:focus-visible,
+    .float-actions button:hover,
+    .float-actions button:focus-visible {
       border-color: var(--accent);
       color: var(--text);
       outline: none;
@@ -957,7 +962,6 @@
   </style>
 </head>
 <body>
-  <div id="top"></div>
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
@@ -1688,16 +1692,47 @@ selectKeyAndSign(callerSuppliedKeyId, arbitraryTransaction)</pre>
   </div>
 
   <div class="float-actions">
-    <a href="#top" title="回到顶部" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    <button type="button" class="to-top" title="回到顶部" aria-label="回到顶部">
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
         <path d="M8 3.2 2.8 8.4l1.1 1.1L7.2 6.2V13h1.6V6.2l3.3 3.3 1.1-1.1L8 3.2Z" fill="currentColor"/>
       </svg>
-    </a>
+    </button>
     <a href="#comments" title="查看留言" aria-label="查看留言">
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
         <path d="M2.2 2.4h11.6c.6 0 1 .4 1 1v7.2c0 .6-.4 1-1 1H6.1L2.6 14.7c-.4.3-.9 0-.9-.5V3.4c0-.6.4-1 1-1Z" fill="currentColor"/>
       </svg>
     </a>
   </div>
+  <script>
+    (function () {
+      var button = document.querySelector(".to-top");
+      if (!button) return;
+      button.addEventListener("click", function () {
+        var root = document.scrollingElement || document.documentElement;
+        var start = root.scrollTop || window.pageYOffset || 0;
+        if (start <= 0) return;
+        var html = document.documentElement;
+        var previous = html.style.scrollBehavior;
+        html.style.scrollBehavior = "auto";
+        var duration = 280;
+        var t0 = performance.now();
+        function frame(now) {
+          var progress = Math.min(1, (now - t0) / duration);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var next = Math.round(start * (1 - eased));
+          root.scrollTop = next;
+          document.body.scrollTop = next;
+          if (progress < 1) {
+            requestAnimationFrame(frame);
+            return;
+          }
+          root.scrollTop = 0;
+          document.body.scrollTop = 0;
+          html.style.scrollBehavior = previous;
+        }
+        requestAnimationFrame(frame);
+      });
+    })();
+  </script>
 </body>
 </html>
