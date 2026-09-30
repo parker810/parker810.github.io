@@ -105,10 +105,18 @@
       text-decoration: none;
     }
 
-    .brand:hover,
-    .brand:focus-visible {
-      color: var(--accent);
+    .home-link {
+      flex: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 650;
       text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .home-link:hover,
+    .home-link:focus-visible {
+      color: var(--accent);
     }
 
     .brand-mark {
@@ -951,10 +959,11 @@
 <body>
   <header class="topbar" id="top">
     <div class="topbar-inner">
-      <a class="brand" href="{{ .Site.Home.RelPermalink }}">
+      <div class="brand">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span>Peter's blog</span>
-      </a>
+        <span>Bitget热钱包安全事件分析</span>
+      </div>
+      <a class="home-link" href="{{ .Site.Home.RelPermalink }}">回到首页</a>
     </div>
   </header>
 
