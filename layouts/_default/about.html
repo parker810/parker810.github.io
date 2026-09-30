@@ -1,0 +1,12 @@
+{{- define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end -}}
+
+{{- define "content" -}}
+    {{- $params := .Scratch.Get "params" -}}
+    <div class="page single about-page">
+        <h1 class="single-title">{{ .Title }}</h1>
+        <div class="content" id="content">
+            {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
+        </div>
+        {{- partial "comment.html" . -}}
+    </div>
+{{- end -}}

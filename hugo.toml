@@ -1,0 +1,94 @@
+baseURL = "https://parker810.github.io/"
+title = "Peter's blog"
+theme = "LoveIt"
+defaultContentLanguage = "zh-cn"
+locale = "zh-cn"
+languageName = "简体中文"
+hasCJKLanguage = true
+enableRobotsTXT = true
+enableGitInfo = false
+enableEmoji = true
+
+[menu]
+  [[menu.main]]
+    weight = 1
+    identifier = "home"
+    name = "首页"
+    url = "/"
+  [[menu.main]]
+    weight = 2
+    identifier = "posts"
+    name = "文章"
+    url = "/posts/"
+  [[menu.main]]
+    weight = 3
+    identifier = "categories"
+    name = "分类"
+    url = "/categories/"
+  [[menu.main]]
+    weight = 4
+    identifier = "tags"
+    name = "标签"
+    url = "/tags/"
+  [[menu.main]]
+    weight = 5
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+  [[menu.main]]
+    weight = 6
+    identifier = "github"
+    pre = "<i class='fab fa-github' aria-hidden='true'></i>"
+    name = ""
+    url = "https://github.com/parker810"
+    title = "GitHub"
+
+[pagination]
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+
+[params]
+  defaultTheme = "dark"
+  dateFormat = "2006-01-02"
+  title = "Peter's blog"
+  description = "Security • Web3 • AI • Red Team"
+
+  [params.author]
+    name = "Peter"
+
+  [params.header]
+    desktopMode = "fixed"
+    mobileMode = "auto"
+    [params.header.title]
+      name = "Peter's blog"
+      typeit = false
+
+  [params.footer]
+    enable = false
+
+  [params.search]
+    enable = true
+    type = "fuse"
+
+  [params.home]
+    rss = 10
+    [params.home.profile]
+      enable = true
+      avatarURL = "/images/avatar.jpg"
+      title = "Peter's blog"
+      subtitle = "Security • Web3 • AI • Red Team"
+      typeit = true
+      social = true
+    [params.home.posts]
+      enable = true
+      paginate = 6
+
+  [params.social]
+    GitHub = "parker810"
+    Email = "saul.parker810@gmail.com"
+    RSS = true
+
+  [params.page.comment]
+    enable = false

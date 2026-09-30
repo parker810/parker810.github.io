@@ -1,0 +1,54 @@
+.about-page {
+  .single-title {
+    text-align: left;
+    margin: 0.5rem 0 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 650;
+  }
+
+  .content {
+    p {
+      margin: 0.85rem 0;
+      line-height: 1.85;
+    }
+
+    ul {
+      margin: 0.4rem 0 1rem;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin: 0.28rem 0;
+    }
+
+    a[href^="mailto"] {
+      display: inline-block;
+      margin-left: 0.25rem;
+      padding: 0.05rem 0.45rem;
+      border-radius: 6px;
+      background: #eceff3;
+      color: #1f2328;
+      font-weight: 650;
+      text-decoration: none;
+    }
+  }
+}
+
+[theme=dark] .about-page .content a[href^="mailto"] {
+  background: #2c333c;
+  color: #f2f4f6;
+}
+
+.single .content > h2 > .header-mark::before,
+.single .content > h3 > .header-mark::before,
+.single .content > h4 > .header-mark::before,
+.single .content > h5 > .header-mark::before,
+.single .content > h6 > .header-mark::before,
+[theme=dark] .single .content > h2 > .header-mark::before,
+[theme=dark] .single .content > h3 > .header-mark::before,
+[theme=dark] .single .content > h4 > .header-mark::before,
+[theme=dark] .single .content > h5 > .header-mark::before,
+[theme=dark] .single .content > h6 > .header-mark::before {
+  content: none;
+  margin: 0;
+}
