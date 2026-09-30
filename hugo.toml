@@ -9,6 +9,9 @@ enableRobotsTXT = true
 enableGitInfo = false
 enableEmoji = true
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [menu]
   [[menu.main]]
     weight = 1
@@ -76,6 +79,9 @@ enableEmoji = true
   [params.search]
     enable = true
     type = "fuse"
+    [params.search.fuse]
+      ignoreLocation = true
+      minMatchCharLength = 1
 
   [params.home]
     rss = 10
