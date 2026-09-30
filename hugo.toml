@@ -37,6 +37,11 @@ enableEmoji = true
     url = "/about/"
   [[menu.main]]
     weight = 6
+    identifier = "message"
+    name = "留言"
+    url = "/message/"
+  [[menu.main]]
+    weight = 7
     identifier = "github"
     pre = "<i class='fab fa-github' aria-hidden='true'></i>"
     name = ""
